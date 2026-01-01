@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Header pageOption="home" variant="overlay" />
       <main>
-        <section className="my-4 md:py-8 relative">
+        <section className="py-4 md:py-8 relative">
           <div className="container px-8">
             <div className="bg-(--dark-green) rounded-[30px] flex flex-col md:flex-row overflow-hidden">
               <div className="pt-40 md:pt-70.75 pr-10 mb-20 md:pb-40.75 pl-10 md:pl-20">
@@ -26,7 +26,7 @@ export default function Home() {
                 </Link>
               </div>
               <div className="min-w-full md:min-w-174.75 min-h-84 md:min-h-full bg-[url('/img/hero.png')] bg-cover bg-center bg-no-repeat relative">
-                <div className="flex gap-2.5 md:gap-4 justify-center items-center rounded-[20px] w-54 md:w-71 h-25 md:h-29.5 bg-background absolute top-10 left-10 md:right-12.5 md:bottom-12.5 p-4 md:p-8">
+                <div className="flex gap-2.5 md:gap-4 justify-center items-center rounded-[20px] w-54 md:w-71 h-25 md:h-29.5 bg-background absolute right-10 bottom-10 md:right-12.5 md:bottom-12.5 p-4 md:p-8">
                   <div className="rounded-[13px] w-8 h-8 md:w-13.5 md:h-13.5 bg-(--dark-green) flex items-center justify-center">
                     <Check size={20} color="white" />
                   </div>

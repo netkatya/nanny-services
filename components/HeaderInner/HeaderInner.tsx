@@ -22,25 +22,25 @@ export default function HeaderInner({ pageOption }: PageProps) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-10 ml-auto mr-23">
-          <a
-            href=""
+          <Link
+            href="/"
             className="font-normal text-[16px] leading-tight tracking-[-0.01em] text-background"
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href=""
             className="font-normal text-[16px] leading-tight tracking-[-0.01em] text-background"
           >
             Nannies
-          </a>
+          </Link>
           {pageOption === "other" && (
-            <a
+            <Link
               href="/favorites"
               className="font-normal text-[16px] leading-tight tracking-[-0.01em] text-background"
             >
               Favorites
-            </a>
+            </Link>
           )}
         </nav>
 
@@ -63,7 +63,7 @@ export default function HeaderInner({ pageOption }: PageProps) {
         </button>
       </div>
 
-      {/* Mobile menu overlay на весь экран */}
+      {/* Mobile menu overlay */}
       <div
         className={`md:hidden fixed bg-(--dark-green) inset-0 z-40 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
@@ -96,7 +96,7 @@ export default function HeaderInner({ pageOption }: PageProps) {
           </nav>
 
           {/* AuthNavigation */}
-          <div className="w-full border-t border-white/30 pt-6">
+          <div className="w-full border-t border-white/30 pt-8">
             <AuthNavigation />
           </div>
         </div>

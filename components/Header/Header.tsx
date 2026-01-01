@@ -14,7 +14,7 @@ export default function Header({
     <header
       className={clsx(
         "h-22 flex justify-center items-center w-full border-b border-white/40",
-        variant === "overlay" && "absolute top-8 left-4 md:top-8 md:left-8 z-20"
+        variant === "overlay" && "absolute top-4 left-4 md:top-8 md:left-8 z-20"
       )}
     >
       <div className="container">
