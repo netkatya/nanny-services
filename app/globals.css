@@ -6,6 +6,7 @@
   --text1: rgba(17, 16, 28, 0.5);
   --dark-green: #103931;
   --light-green: rgba(16, 57, 49, 0.2);
+  --font-family: 'Inter', sans-serif;
 }
 
 @theme inline {
@@ -45,9 +46,9 @@ ul, ol, li {
 
 .container {
   min-width: 320px;
-  max-width: 375px;
+  max-width: 410px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
 }
 
 @media screen and (min-width: 768px) {

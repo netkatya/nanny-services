@@ -31,12 +31,12 @@ export default function AuthNavigation({ onClick }: AuthNavigationProps) {
           <button onClick={handleLogout}>Log Out</button>
         </>
       ) : (
-        <ul className="flex gap-2">
+        <ul className="flex gap-2 justify-center items-center">
           <li className="">
             <Link
               href="/auth/login"
               className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-9.75 py-3.5 w-31 h-12
-                font-medium text-[16px] leading-tight tracking-[-0.01em] text-(--var-background)"
+                font-medium text-[16px] leading-tight tracking-[-0.01em] text-background"
               prefetch={false}
               onClick={onClick}
             >
@@ -46,7 +46,7 @@ export default function AuthNavigation({ onClick }: AuthNavigationProps) {
           <li className="">
             <Link
               href="/auth/register"
-              className="rounded-[30px] px-10 py-3.5 w-42 h-12 bg-[#103931] font-medium text-[16px] leading-tight tracking-[-0.01em] text-[#fbfbfb]"
+              className="rounded-[30px] px-10 py-3.5 w-42 h-12 bg-background md:bg-[#103931] font-medium text-[16px] leading-tight tracking-[-0.01em] text-[#103931] md:text-background"
               prefetch={false}
               onClick={onClick}
             >
