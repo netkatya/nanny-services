@@ -29,7 +29,7 @@ export default function HeaderInner({ pageOption }: PageProps) {
             Home
           </Link>
           <Link
-            href=""
+            href="/nannies"
             className="font-normal text-[16px] leading-tight tracking-[-0.01em] text-background"
           >
             Nannies
