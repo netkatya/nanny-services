@@ -100,7 +100,7 @@ export default function NannyCard({ nanny }: NannyCardProps) {
           <button
             onClick={toggleFavorite}
             aria-label="Add to favorites"
-            className="ml-2"
+            className="ml-12"
           >
             <Heart
               size={24}
