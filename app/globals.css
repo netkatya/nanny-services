@@ -7,6 +7,8 @@
   --dark-green: #103931;
   --light-green: rgba(16, 57, 49, 0.2);
   --font-family: 'Inter', sans-serif;
+  --grey-bg: #f3f3f3;
+  --grey-text: #8a8a89;
 }
 
 @theme inline {
@@ -62,5 +64,43 @@ ul, ol, li {
   .container {
     max-width: 1440px;
     padding: 0 64px;
+  }
+}
+
+/* Loader */
+.spinner {
+  --clr: rgb(0, 113, 128);
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background-color: var(--clr);
+  opacity: 0;
+  animation: fade 1s ease-in-out infinite;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  animation-delay: 0.33s;
+}
+
+.dot-3 {
+  animation-delay: 0.66s;
+}
+
+@keyframes fade {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0;
   }
 }

@@ -12,7 +12,7 @@ export default function HeaderInner({ pageOption }: PageProps) {
   return (
     <div className="relative bg-dark-green">
       {/* Header bar */}
-      <div className="container flex items-center py-4">
+      <div className="px-16 flex items-center py-4">
         {/* Logo */}
         <Link href="/">
           <svg width={164} height={28}>

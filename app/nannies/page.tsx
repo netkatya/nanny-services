@@ -7,6 +7,7 @@ import NannyCard from "@/components/NannyCard/NannyCard";
 import { ref, get } from "firebase/database";
 import { db } from "@/lib/firebase/firebase";
 import type { Nanny } from "@/types/nanny";
+import Loading from "../Loading";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -46,33 +47,33 @@ export default function NanniesPage() {
     <>
       <Header pageOption="other" variant="default" />
 
-      <main className="container">
-        {loading && (
-          <p className="text-center text-gray-500">Loading nannies...</p>
-        )}
+      <main className="bg-[#f3f3f3] pt-16 pb-25 px-32">
+        <div className="container">
+          {loading && <Loading />}
 
-        {!loading && (
-          <>
-            <ul className="">
-              {nannies.slice(0, visibleCount).map((nanny) => (
-                <li key={nanny.id}>
-                  <NannyCard nanny={nanny} />
-                </li>
-              ))}
-            </ul>
+          {!loading && (
+            <>
+              <ul className="flex flex-col gap-8">
+                {nannies.slice(0, visibleCount).map((nanny) => (
+                  <li key={nanny.id}>
+                    <NannyCard nanny={nanny} />
+                  </li>
+                ))}
+              </ul>
 
-            {visibleCount < nannies.length && (
-              <div className="flex justify-center mt-10">
-                <button
-                  onClick={loadMore}
-                  className="rounded-[30px] px-10 py-3.5 w-39.75 h-12 bg-(--dark-green) text-background font-medium text-[16px] leading-tight tracking-[-0.01em]"
-                >
-                  Load more
-                </button>
-              </div>
-            )}
-          </>
-        )}
+              {visibleCount < nannies.length && (
+                <div className="flex justify-center mt-16">
+                  <button
+                    onClick={loadMore}
+                    className="rounded-[30px] px-10 py-3.5 w-39.75 h-12 bg-(--dark-green) text-background font-medium text-[16px] leading-tight tracking-[-0.01em]"
+                  >
+                    Load more
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </main>
     </>
   );

@@ -49,7 +49,7 @@ export default function NannyCard({ nanny }: NannyCardProps) {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 p-4 border rounded-lg bg-white shadow-sm">
+    <div className="flex flex-col md:flex-row gap-6 p-6 rounded-3xl bg-background ">
       {/* Avatar */}
       <div className="border-2 border-[rgba(240,63,59,0.2)] rounded-[30px] w-30 h-30 p-3 flex justify-center items-center overflow-hidden">
         <Image
@@ -65,37 +65,35 @@ export default function NannyCard({ nanny }: NannyCardProps) {
       <div className="flex-1 flex flex-col">
         {/* Top row: Nanny type, location, rating, price, favorite */}
         <div className="flex justify-between items-start md:items-center">
-          <div className="flex items-center flex-wrap gap-2 md:gap-4">
-            <p className="font-medium text-[16px] text-gray-500">Nanny</p>
-
-            {/* Location */}
-            <div className="flex items-center">
-              <svg width={16} height={16} className="mr-2">
-                <use
-                  href="/img/icons.svg#icon-map-pin"
-                  fill="#fbfbfb"
-                  stroke="#000"
-                />
-              </svg>
-              <p className="font-medium text-[16px] text-[#11101c]">
-                {nanny.location}
+          <div className="flex items-center flex-wrap md:flex-nowrap w-full">
+            <p className="font-medium text-[16px] text-gray-500 mb-2">Nanny</p>
+            <div className="flex ml-auto">
+              {/* Location */}
+              <div className="flex items-center">
+                <svg width={16} height={16} className="mr-2 ml-auto">
+                  <use
+                    href="/img/icons.svg#icon-map-pin"
+                    fill="#fbfbfb"
+                    stroke="#000"
+                  />
+                </svg>
+                <p className="font-medium text-[16px] leading-[150%]">
+                  {nanny.location}
+                </p>
+              </div>
+              <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
+              {/* Rating */}
+              <p className="flex items-center gap-1 font-medium text-[16px] leading-[150%]">
+                <FaStar size={15} color="#ffc531" />
+                {nanny.rating}
+              </p>
+              <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
+              {/* Price */}
+              <p className="font-medium text-[16px] leading-[150%] ">
+                Prise / 1 hour:{" "}
+                <span className="text-[#38cd3e]">{nanny.price_per_hour}$</span>
               </p>
             </div>
-
-            <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
-
-            {/* Rating */}
-            <p className="flex items-center gap-1">
-              <FaStar size={15} color="#ffc531" />
-              {nanny.rating}
-            </p>
-
-            <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
-
-            {/* Price */}
-            <p className="text-[16px] text-[#11101c]">
-              ${nanny.price_per_hour}/hour
-            </p>
           </div>
 
           {/* Favorite */}
@@ -107,7 +105,7 @@ export default function NannyCard({ nanny }: NannyCardProps) {
             <Heart
               size={24}
               strokeWidth={2}
-              className="transition-transform duration-200 hover:scale-110 cursor-pointer"
+              className="transition-transform duration-200 hover:scale-110"
               {...(isFavorite
                 ? { fill: "#103931", stroke: "#103931" }
                 : { fill: "none", stroke: "#11101c" })}
@@ -116,39 +114,47 @@ export default function NannyCard({ nanny }: NannyCardProps) {
         </div>
 
         {/* Name */}
-        <h3 className="font-medium text-[24px] leading-none mt-2">
+        <h3 className="font-medium text-[24px] leading-[100%] mb-6">
           {nanny.name}
         </h3>
 
         {/* About */}
-        <div className="mt-2 text-sm space-y-1">
-          <p>Age: {calculateAge(nanny.birthday)}</p>
-          <p>Experience: {nanny.experience}</p>
-          <p>Kids age: {nanny.kids_age}</p>
-          <p>
-            <strong>Characters:</strong>{" "}
-            {nanny.characters && nanny.characters.length > 0
-              ? nanny.characters.map((char, i) => (
-                  <span
-                    key={i}
-                    className="px-2 py-1 bg-gray-100 rounded text-sm mr-1"
-                  >
-                    {char}
-                  </span>
-                ))
-              : "N/A"}
-          </p>
-          <p>Education: {nanny.education}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) font-medium text-(--grey-text)">
+            Age:{" "}
+            <span className="text-foreground underline">
+              {calculateAge(nanny.birthday)}
+            </span>
+          </div>
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) font-medium text-(--grey-text)">
+            Experience:{" "}
+            <span className="text-foreground">{nanny.experience}</span>
+          </div>
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) h-10 font-medium text-(--grey-text)">
+            Kids age: <span className="text-foreground">{nanny.kids_age}</span>
+          </div>
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) h-10 font-medium text-(--grey-text)">
+            Characters:{" "}
+            <span className="text-foreground">
+              {nanny.characters?.length ? nanny.characters.join(", ") : "N/A"}
+            </span>
+          </div>
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) h-10 font-medium text-(--grey-text)">
+            Education:{" "}
+            <span className="text-foreground">{nanny.education}</span>
+          </div>
         </div>
-        <p>{nanny.about}</p>
+        <p className="text-(--text1) mt-6">{nanny.about}</p>
         {/* Read more / reviews */}
-        <div className="mt-2">
-          <button
-            onClick={() => setShowDetails((prev) => !prev)}
-            className="text-blue-500 underline text-sm mb-2"
-          >
-            {showDetails ? "Hide details" : "Read more"}
-          </button>
+        <div className="mt-3.5">
+          {!showDetails && nanny.reviews && nanny.reviews.length > 0 && (
+            <button
+              onClick={() => setShowDetails(true)}
+              className="font-medium text-base leading-normal underline"
+            >
+              Read more
+            </button>
+          )}
 
           <div
             className={`transition-all duration-300 ease-in-out overflow-hidden ${
@@ -157,18 +163,29 @@ export default function NannyCard({ nanny }: NannyCardProps) {
           >
             {nanny.reviews && nanny.reviews.length > 0 ? (
               nanny.reviews.map((review: Review, index: number) => (
-                <div
-                  key={index}
-                  className="p-2 border rounded-md bg-gray-50 mt-2"
-                >
-                  <p className="font-medium">{review.reviewer}</p>
-                  <p className="text-gray-600">{review.comment}</p>
-                  <p className="text-yellow-500">Rating: {review.rating}</p>
+                <div key={index} className="mt-2">
+                  <div className="flex gap-3 mb-4">
+                    <div className="w-11 h-11 rounded-full bg-(--light-green) flex justify-center items-center">
+                      {review.reviewer.slice(0, 1)}
+                    </div>
+                    <div>
+                      <p className="font-medium mb-1">{review.reviewer}</p>
+                      <p className="font-medium text-[14px] leading-[1.29] flex gap-2">
+                        <FaStar size={15} color="#ffc531" />
+                        {review.rating.toFixed(1)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-(--text1)">{review.comment}</p>
                 </div>
               ))
             ) : (
               <p className="text-gray-500 mt-2">No reviews yet.</p>
             )}
+            <button className="mt-12 mb-6 rounded-[30px] px-7 py-3.5 w-53.75 h-12 bg-(--dark-green) font-medium text-[16px] leading-tight tracking-[-0.01em] text-background">
+              Make an appointment
+            </button>
           </div>
         </div>
       </div>
