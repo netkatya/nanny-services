@@ -130,16 +130,16 @@ export default function NannyCard({ nanny }: NannyCardProps) {
             Experience:{" "}
             <span className="text-foreground">{nanny.experience}</span>
           </div>
-          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) h-10 font-medium text-(--grey-text)">
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) font-medium text-(--grey-text)">
             Kids age: <span className="text-foreground">{nanny.kids_age}</span>
           </div>
-          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) h-10 font-medium text-(--grey-text)">
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) font-medium text-(--grey-text)">
             Characters:{" "}
             <span className="text-foreground">
               {nanny.characters?.length ? nanny.characters.join(", ") : "N/A"}
             </span>
           </div>
-          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) h-10 font-medium text-(--grey-text)">
+          <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) font-medium text-(--grey-text)">
             Education:{" "}
             <span className="text-foreground">{nanny.education}</span>
           </div>
