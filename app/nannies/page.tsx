@@ -47,7 +47,7 @@ export default function NanniesPage() {
     <>
       <Header pageOption="other" variant="default" />
 
-      <main className="bg-[#f3f3f3] pt-16 pb-25 px-32">
+      <main className="bg-[#f3f3f3] pt-16 pb-25 px-4 lg:px-32">
         <div className="container">
           {loading && <Loading />}
 

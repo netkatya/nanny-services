@@ -1,60 +1,63 @@
 "use client";
 
-import Link from "next/link";
-import { useAuthStore } from "@/lib/store/authStore";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase/firebase";
 
-type AuthNavigationProps = {
-  onClick?: () => void;
+type Props = {
+  onLoginClick?: () => void;
+  onRegisterClick?: () => void;
 };
 
-export default function AuthNavigation({ onClick }: AuthNavigationProps) {
-  const router = useRouter();
-  const { isAuthenticated, clearIsAuthenticated } = useAuthStore();
+export default function AuthNavigation({
+  onLoginClick,
+  onRegisterClick,
+}: Props) {
+  const { user } = useAuth();
+  const isAuthenticated = !!user;
 
-  const handleLogout = () => {
-    clearIsAuthenticated();
-    router.push("/");
-    onClick?.();
+  const handleLogout = async () => {
+    await signOut(auth);
   };
 
-  return (
-    <>
-      {isAuthenticated ? (
-        <>
-          <div className="flex gap-3.5">
-            <svg width={40} height={40}>
-              <use href="/public/img/icons.svg#icon-user"></use>
+  if (isAuthenticated) {
+    return (
+      <div className="flex justify-center items-center gap-4 text-background">
+        <div className="flex items-center justify-center gap-3.5 ml-0 lg:ml-auto">
+          <div className="w-10 h-10 flex justify-center items-center bg-background rounded-xl">
+            <svg width={24} height={24}>
+              <use href="/img/icons.svg#icon-user" fill="#103931" />
             </svg>
-            <p></p>
           </div>
-          <button onClick={handleLogout}>Log Out</button>
-        </>
-      ) : (
-        <ul className="flex gap-2 justify-center items-center">
-          <li className="">
-            <Link
-              href="/auth/login"
-              className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-9.75 py-3.5 w-31 h-12
-                font-medium text-[16px] leading-tight tracking-[-0.01em] text-background"
-              prefetch={false}
-              onClick={onClick}
-            >
-              Log In
-            </Link>
-          </li>
-          <li className="">
-            <Link
-              href="/auth/register"
-              className="rounded-[30px] px-10 py-3.5 w-42 h-12 bg-background md:bg-[#103931] font-medium text-[16px] leading-tight tracking-[-0.01em] text-[#103931] md:text-background"
-              prefetch={false}
-              onClick={onClick}
-            >
-              Registration
-            </Link>
-          </li>
-        </ul>
-      )}
-    </>
+          <span className="font-medium text-[18px] leading-[111%] tracking-[-0.01em]">
+            {user.displayName || user.email}
+          </span>
+        </div>
+
+        <button
+          onClick={handleLogout}
+          className="border px-4 py-2 rounded-full hover:bg-white/10"
+        >
+          Log Out
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex gap-4 justify-center items-center">
+      <button
+        onClick={onLoginClick}
+        className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-9.75 py-3.5 font-medium text-[16px] text-background"
+      >
+        Log In
+      </button>
+      <button
+        onClick={onRegisterClick}
+        className="rounded-[30px] px-10 py-3.5 bg-background md:bg-[#103931] font-medium text-[16px] text-[#103931] md:text-background"
+      >
+        Register
+      </button>
+    </div>
   );
 }

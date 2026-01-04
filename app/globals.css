@@ -9,6 +9,7 @@
   --font-family: 'Inter', sans-serif;
   --grey-bg: #f3f3f3;
   --grey-text: #8a8a89;
+  --backdrop: rgba(11, 11, 11, 0.6);
 }
 
 @theme inline {
@@ -52,6 +53,42 @@ ul, ol, li {
   margin: 0 auto;
   padding: 0;
 }
+
+.input {
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px 16px 18px;
+  width: 100%;
+  height: 52px;
+}
+
+.green-button {
+  background: var(--dark-green);
+  border: 1px solid var(--dark-green);
+  border-radius: 30px;
+  color: var(--background);
+  transition: all 250ms ease-in-out;
+}
+
+.green-button:hover {
+  background: var(--background);
+  border: 1px solid var(--dark-green);
+  color: var(--dark-green)
+}
+
+.backdrop {
+  background: var(--backdrop);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+
 
 @media screen and (min-width: 768px) {
   .container {

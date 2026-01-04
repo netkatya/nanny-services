@@ -67,9 +67,9 @@ export default function NannyCard({ nanny }: NannyCardProps) {
         <div className="flex justify-between items-start md:items-center">
           <div className="flex items-center flex-wrap md:flex-nowrap w-full">
             <p className="font-medium text-[16px] text-gray-500 mb-2">Nanny</p>
-            <div className="flex ml-auto">
+            <div className="flex ml-auto flex-wrap gap-2 md:gap-0 mb-2 md:mb-0">
               {/* Location */}
-              <div className="flex items-center">
+              <div className="flex items-center ">
                 <svg width={16} height={16} className="mr-2 ml-auto">
                   <use
                     href="/img/icons.svg#icon-map-pin"
@@ -77,7 +77,7 @@ export default function NannyCard({ nanny }: NannyCardProps) {
                     stroke="#000"
                   />
                 </svg>
-                <p className="font-medium text-[16px] leading-[150%]">
+                <p className="font-medium md:text-[16px] leading-[150%]">
                   {nanny.location}
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function NannyCard({ nanny }: NannyCardProps) {
               </p>
               <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
               {/* Price */}
-              <p className="font-medium text-[16px] leading-[150%] ">
+              <p className="font-medium text-[16px] leading-[150%]">
                 Prise / 1 hour:{" "}
                 <span className="text-[#38cd3e]">{nanny.price_per_hour}$</span>
               </p>
@@ -183,7 +183,7 @@ export default function NannyCard({ nanny }: NannyCardProps) {
             ) : (
               <p className="text-gray-500 mt-2">No reviews yet.</p>
             )}
-            <button className="mt-12 mb-6 rounded-[30px] px-7 py-3.5 w-53.75 h-12 bg-(--dark-green) font-medium text-[16px] leading-tight tracking-[-0.01em] text-background">
+            <button className="green-button mt-12 mb-6 px-7 py-3.5 w-53.75 h-12 font-medium text-[16px] leading-tight tracking-[-0.01em] text-background">
               Make an appointment
             </button>
           </div>

@@ -19,7 +19,7 @@ export default function Header({
       )}
     >
       <div className="container">
-        <HeaderInner pageOption={pageOption} />
+        <HeaderInner />
       </div>
     </header>
   );
