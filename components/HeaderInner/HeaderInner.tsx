@@ -30,19 +30,22 @@ export default function HeaderInner() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex md:gap-4 lg:gap-10 md:ml-10 md:mr-10 lg:ml-auto">
-          <Link href="/" className="font-normal text-[16px] text-background">
+          <Link
+            href="/"
+            className="text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
+          >
             Home
           </Link>
           <Link
             href="/nannies"
-            className="font-normal text-[16px] text-background"
+            className="text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
           >
             Nannies
           </Link>
           {isAuthenticated && (
             <Link
               href="/favorites"
-              className="font-normal text-[16px] text-background"
+              className="text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
             >
               Favorites
             </Link>

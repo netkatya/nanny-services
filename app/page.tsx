@@ -19,10 +19,14 @@ export default function Home() {
                 </p>
                 <Link
                   href="/nannies"
-                  className="flex items-center gap-2 border border-[rgba(251,251,251,0.4)] rounded-[30px] px-12 py-4.5 w-57.5 h-15 font-medium text-[20px] leading-[1.2] tracking-[-0.01em] text-background"
+                  className="group flex items-center gap-2 border border-[rgba(251,251,251,0.4)] hover:border-background transition-all duration-250 rounded-[30px] px-12 py-4.5 w-57.5 h-15 font-medium text-[20px] leading-[1.2] tracking-[-0.01em] text-background"
                 >
                   Get started
-                  <ArrowUpRight size={24} color="#fbfbfb" />
+                  <ArrowUpRight
+                    size={24}
+                    color="#fbfbfb"
+                    className="transition-transform duration-250 group-hover:rotate-45"
+                  />
                 </Link>
               </div>
               <div className="min-w-full lg:min-w-174.75 min-h-84 md:min-h-180 lg:min-h-full bg-[url('/img/hero.png')] bg-cover bg-center bg-no-repeat relative">

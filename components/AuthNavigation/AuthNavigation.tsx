@@ -48,13 +48,13 @@ export default function AuthNavigation({
     <div className="flex gap-4 justify-center items-center">
       <button
         onClick={onLoginClick}
-        className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-9.75 py-3.5 font-medium text-[16px] text-background"
+        className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-9.75 py-3.5 font-medium text-[16px] text-background hover:text-(--dark-green) hover:bg-background transition-all duration-250 ease-in-out"
       >
         Log In
       </button>
       <button
         onClick={onRegisterClick}
-        className="rounded-[30px] px-10 py-3.5 bg-background md:bg-[#103931] font-medium text-[16px] text-[#103931] md:text-background"
+        className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-10 py-3.5 bg-background hover:bg-[#103931] hover:text-background md:bg-[#103931] md:hover:text-(--dark-green) md:hover:bg-background transition-all duration-250 ease-in-out font-medium text-[16px] text-[#103931] md:text-background"
       >
         Register
       </button>
