@@ -19,3 +19,12 @@ export interface Review {
   reviewer: string;
   rating: number;
 }
+
+export type SortOption =
+  | "alphabet-asc"
+  | "alphabet-desc"
+  | "price-less-10"
+  | "price-more-10"
+  | "popular"
+  | "not-popular"
+  | "all";

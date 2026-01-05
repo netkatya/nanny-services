@@ -11,45 +11,50 @@ import { Heart } from "lucide-react";
 
 interface NannyCardProps {
   nanny: Nanny;
+  onRemoveFavorite?: (nannyId: string) => void;
 }
 
-export default function NannyCard({ nanny }: NannyCardProps) {
+export default function NannyCard({ nanny, onRemoveFavorite }: NannyCardProps) {
   const { user } = useAuth();
-  const [showDetails, setShowDetails] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [showDetails, setShowDetails] = useState(false); // toggle detailed view
+  const [isFavorite, setIsFavorite] = useState(false); // track if nanny is favorite
 
+  // Check if the nanny is already in favorites in Firebase
   useEffect(() => {
     if (!user) return;
-    get(ref(db, `users/${user.uid}/favorites/${nanny.id}`)).then((snapshot) =>
-      setIsFavorite(snapshot.exists())
-    );
+    const favRef = ref(db, `users/${user.uid}/favorites/${nanny.id}`);
+    get(favRef).then((snapshot) => setIsFavorite(snapshot.exists()));
   }, [user, nanny.id]);
 
+  // Add/remove nanny from favorites
   const toggleFavorite = async () => {
     if (!user) {
       alert("For authorized users only!");
       return;
     }
     const favRef = ref(db, `users/${user.uid}/favorites/${nanny.id}`);
-    await set(favRef, isFavorite ? null : true);
-    setIsFavorite((prev) => !prev);
+    const newValue = !isFavorite;
+    await set(favRef, newValue ? true : null);
+    setIsFavorite(newValue);
+
+    // Notify parent to remove from Favorites page
+    if (!newValue && onRemoveFavorite) {
+      onRemoveFavorite(nanny.id);
+    }
   };
 
-  function calculateAge(birthday: string) {
+  // Calculate age from birthday
+  const calculateAge = (birthday: string) => {
     const birthDate = new Date(birthday);
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
-
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
     return age;
-  }
+  };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 p-6 rounded-3xl bg-background ">
+    <div className="flex flex-col md:flex-row gap-6 p-6 rounded-3xl bg-background">
       {/* Avatar */}
       <div className="border-2 border-[rgba(240,63,59,0.2)] rounded-[30px] w-30 h-30 p-3 flex justify-center items-center overflow-hidden">
         <Image
@@ -61,15 +66,15 @@ export default function NannyCard({ nanny }: NannyCardProps) {
         />
       </div>
 
-      {/* Info */}
+      {/* Info section */}
       <div className="flex-1 flex flex-col">
-        {/* Top row: Nanny type, location, rating, price, favorite */}
+        {/* Top row: nanny type, location, rating, price, favorite */}
         <div className="flex justify-between items-start md:items-center">
           <div className="flex items-center flex-wrap md:flex-nowrap w-full">
             <p className="font-medium text-[16px] text-gray-500 mb-2">Nanny</p>
             <div className="flex ml-auto flex-wrap gap-2 md:gap-0 mb-2 md:mb-0">
               {/* Location */}
-              <div className="flex items-center ">
+              <div className="flex items-center">
                 <svg width={16} height={16} className="mr-2 ml-auto">
                   <use
                     href="/img/icons.svg#icon-map-pin"
@@ -82,21 +87,23 @@ export default function NannyCard({ nanny }: NannyCardProps) {
                 </p>
               </div>
               <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
+
               {/* Rating */}
               <p className="flex items-center gap-1 font-medium text-[16px] leading-[150%]">
                 <FaStar size={15} color="#ffc531" />
                 {nanny.rating}
               </p>
               <div className="w-px h-4 bg-[rgba(17,16,28,0.2)] mx-2"></div>
+
               {/* Price */}
               <p className="font-medium text-[16px] leading-[150%]">
-                Prise / 1 hour:{" "}
+                Price / 1 hour:{" "}
                 <span className="text-[#38cd3e]">{nanny.price_per_hour}$</span>
               </p>
             </div>
           </div>
 
-          {/* Favorite */}
+          {/* Favorite button */}
           <button
             onClick={toggleFavorite}
             aria-label="Add to favorites"
@@ -113,12 +120,12 @@ export default function NannyCard({ nanny }: NannyCardProps) {
           </button>
         </div>
 
-        {/* Name */}
+        {/* Nanny name */}
         <h3 className="font-medium text-[24px] leading-[100%] mb-6">
           {nanny.name}
         </h3>
 
-        {/* About */}
+        {/* Characteristics */}
         <div className="mt-2 flex flex-wrap gap-2">
           <div className="rounded-3xl py-2 px-4 bg-(--grey-bg) font-medium text-(--grey-text)">
             Age:{" "}
@@ -144,24 +151,26 @@ export default function NannyCard({ nanny }: NannyCardProps) {
             <span className="text-foreground">{nanny.education}</span>
           </div>
         </div>
+
         <p className="text-(--text1) mt-6">{nanny.about}</p>
-        {/* Read more / reviews */}
+
+        {/* Read more / reviews section */}
         <div className="mt-3.5">
-          {!showDetails && nanny.reviews && nanny.reviews.length > 0 && (
+          {!showDetails && nanny.reviews?.length ? (
             <button
               onClick={() => setShowDetails(true)}
               className="font-medium text-base leading-normal underline"
             >
               Read more
             </button>
-          )}
+          ) : null}
 
           <div
             className={`transition-all duration-300 ease-in-out overflow-hidden ${
               showDetails ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            {nanny.reviews && nanny.reviews.length > 0 ? (
+            {nanny.reviews?.length ? (
               nanny.reviews.map((review: Review, index: number) => (
                 <div key={index} className="mt-2">
                   <div className="flex gap-3 mb-4">
@@ -176,13 +185,13 @@ export default function NannyCard({ nanny }: NannyCardProps) {
                       </p>
                     </div>
                   </div>
-
                   <p className="text-(--text1)">{review.comment}</p>
                 </div>
               ))
             ) : (
               <p className="text-gray-500 mt-2">No reviews yet.</p>
             )}
+
             <button className="green-button mt-12 mb-6 px-7 py-3.5 w-53.75 h-12 font-medium text-[16px] leading-tight tracking-[-0.01em] text-background">
               Make an appointment
             </button>
