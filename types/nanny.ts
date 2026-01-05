@@ -28,3 +28,13 @@ export type SortOption =
   | "popular"
   | "not-popular"
   | "all";
+
+export interface AppointmentFormData {
+  address: string;
+  phone: string;
+  childAge: string;
+  time: string;
+  email: string;
+  parentName: string;
+  comment?: string;
+}

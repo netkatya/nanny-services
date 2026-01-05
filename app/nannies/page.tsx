@@ -10,6 +10,7 @@ import { db } from "@/lib/firebase/firebase";
 import type { Nanny, SortOption } from "@/types/nanny";
 import { filterAndSortNannies } from "@/utils/nannyUtils";
 import Loading from "../Loading";
+import AppointmentModal from "@/components/AppointmentModal/AppointmentModal";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -19,6 +20,7 @@ export default function NanniesPage() {
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [loading, setLoading] = useState(true);
   const [currentFilter, setCurrentFilter] = useState<SortOption>("all");
+  const [selectedNanny, setSelectedNanny] = useState<Nanny | null>(null);
 
   // Fetch nannies from Firebase
   useEffect(() => {
@@ -62,6 +64,10 @@ export default function NanniesPage() {
     filteredNannies.length <
     filterAndSortNannies(nannies, currentFilter).length;
 
+  const handleMakeAppointment = (nanny: Nanny) => {
+    setSelectedNanny(nanny);
+  };
+
   return (
     <>
       <Header pageOption="other" variant="default" />
@@ -78,8 +84,15 @@ export default function NanniesPage() {
                 visibleCount={visibleCount}
                 onLoadMore={loadMore}
                 hasMore={hasMore}
+                onMakeAppointment={handleMakeAppointment}
               />
             </>
+          )}
+          {selectedNanny && (
+            <AppointmentModal
+              nanny={selectedNanny}
+              onClose={() => setSelectedNanny(null)}
+            />
           )}
         </div>
       </main>

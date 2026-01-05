@@ -8,6 +8,7 @@ type Props = {
   visibleCount: number;
   onLoadMore: () => void;
   hasMore: boolean;
+  onMakeAppointment: (nanny: Nanny) => void;
 };
 
 export default function NannyList({
@@ -15,6 +16,7 @@ export default function NannyList({
   visibleCount,
   onLoadMore,
   hasMore,
+  onMakeAppointment,
 }: Props) {
   return (
     <>
@@ -22,7 +24,7 @@ export default function NannyList({
         <ul className="flex flex-col gap-8">
           {nannies.map((nanny) => (
             <li key={nanny.id}>
-              <NannyCard nanny={nanny} />
+              <NannyCard nanny={nanny} onMakeAppointment={onMakeAppointment} />
             </li>
           ))}
         </ul>

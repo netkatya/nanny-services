@@ -16,7 +16,8 @@ export default function FavoritesPage() {
   const { user } = useAuth();
   const [favorites, setFavorites] = useState<Nanny[]>([]);
   const [filteredFavorites, setFilteredFavorites] = useState<Nanny[]>([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
+  const [selectedNanny, setSelectedNanny] = useState<Nanny | null>(null);
 
   // Fetch favorites from Firebase
   useEffect(() => {
@@ -84,6 +85,7 @@ export default function FavoritesPage() {
                 key={nanny.id}
                 nanny={nanny}
                 onRemoveFavorite={handleRemoveFavorite}
+                onMakeAppointment={(nanny) => setSelectedNanny(nanny)}
               />
             ))
           ) : (

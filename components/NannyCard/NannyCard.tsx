@@ -8,13 +8,15 @@ import { db } from "@/lib/firebase/firebase";
 import type { Nanny, Review } from "@/types/nanny";
 import { FaStar } from "react-icons/fa";
 import { Heart } from "lucide-react";
+import { toast } from "sonner";
 
 interface NannyCardProps {
   nanny: Nanny;
   onRemoveFavorite?: (nannyId: string) => void;
+  onMakeAppointment: (nanny: Nanny) => void;
 }
 
-export default function NannyCard({ nanny, onRemoveFavorite }: NannyCardProps) {
+export default function NannyCard({ nanny, onRemoveFavorite, onMakeAppointment }: NannyCardProps) {
   const { user } = useAuth();
   const [showDetails, setShowDetails] = useState(false); // toggle detailed view
   const [isFavorite, setIsFavorite] = useState(false); // track if nanny is favorite
@@ -29,7 +31,7 @@ export default function NannyCard({ nanny, onRemoveFavorite }: NannyCardProps) {
   // Add/remove nanny from favorites
   const toggleFavorite = async () => {
     if (!user) {
-      alert("For authorized users only!");
+      toast.error("For authorized users only!");
       return;
     }
     const favRef = ref(db, `users/${user.uid}/favorites/${nanny.id}`);
@@ -192,7 +194,10 @@ export default function NannyCard({ nanny, onRemoveFavorite }: NannyCardProps) {
               <p className="text-gray-500 mt-2">No reviews yet.</p>
             )}
 
-            <button className="green-button mt-12 mb-6 px-7 py-3.5 w-53.75 h-12 font-medium text-[16px] leading-tight tracking-[-0.01em] text-background">
+            <button
+              onClick={() => onMakeAppointment(nanny)}
+              className="green-button mt-12 mb-6 px-7 py-3.5 w-53.75 h-12 font-medium text-[16px] leading-tight tracking-[-0.01em] text-background"
+            >
               Make an appointment
             </button>
           </div>

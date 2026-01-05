@@ -62,6 +62,10 @@ ul, ol, li {
   height: 52px;
 }
 
+.input:focus {
+  outline: none;
+}
+
 .green-button {
   background: var(--dark-green);
   border: 1px solid var(--dark-green);
