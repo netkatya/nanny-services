@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     type: "website",
     title: "Nanny Services - Find Babysitters Online",
     description: "Find trusted babysitters and nannies for all occasions.",
-    url: "https://yourdomain.com",
+    url: "https://nanny-services-alpha-navy.vercel.app",
     siteName: "Nanny Services",
     images: [
       {
-        url: "https://yourdomain.com/og-image.png",
+        url: "https://nanny-services-alpha-navy.vercel.app/hero.png",
         width: 1200,
         height: 630,
         alt: "Nanny Services - Find Babysitters Online",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Nanny Services - Find Babysitters Online",
     description: "Find trusted babysitters and nannies for all occasions.",
-    images: ["https://yourdomain.com/og-image.png"],
+    images: ["https://nanny-services-alpha-navy.vercel.app/hero.png"],
   },
 };
 

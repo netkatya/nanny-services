@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     type: "website",
     title: "Page Not Found - Nanny Services",
     description: "Oops! The page you are looking for does not exist.",
-    url: "https://yourdomain.com/404",
+    url: "https://nanny-services-alpha-navy.vercel.app/404",
     siteName: "Nanny Services",
     images: [
       {
-        url: "https://yourdomain.com/og-404.png",
+        url: "https://nanny-services-alpha-navy.vercel.app/hero.png",
         width: 1200,
         height: 630,
         alt: "Page Not Found - Nanny Services",
@@ -31,9 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Page Not Found - Nanny Services",
     description: "Oops! The page you are looking for does not exist.",
-    site: "@yourtwitter",
-    creator: "@yourtwitter",
-    images: ["https://yourdomain.com/og-404.png"],
+    images: ["https://nanny-services-alpha-navy.vercel.app/hero.png"],
   },
 };
 
