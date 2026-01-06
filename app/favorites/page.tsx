@@ -12,6 +12,7 @@ import { SortOption } from "@/components/NannyFilterMenu/NannyFilterMenu";
 import { filterAndSortNannies } from "@/utils/nannyUtils";
 import Loading from "../Loading";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
+import AppointmentModal from "@/components/AppointmentModal/AppointmentModal";
 
 export default function FavoritesPage() {
   const { user } = useAuth();
@@ -91,6 +92,12 @@ export default function FavoritesPage() {
             ))
           ) : (
             <p className="text-center text-gray-500 mt-10">No favorites yet.</p>
+          )}
+          {selectedNanny && (
+            <AppointmentModal
+              nanny={selectedNanny}
+              onClose={() => setSelectedNanny(null)}
+            />
           )}
         </div>
         <ScrollToTop />
