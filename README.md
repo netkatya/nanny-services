@@ -1,20 +1,20 @@
 # Nanny Services 👶
 
-**Nanny Services** — це вебзастосунок для пошуку та збереження нянь.  
-Проєкт дозволяє користувачам переглядати список нянь, додавати їх у вибране, а також авторизуватись для доступу до персоналізованого функціоналу.
+**Nanny Services** is a web application for finding and managing babysitters.  
+The project allows users to browse available nannies, add them to favorites, and use personalized features after authentication.
 
-Проєкт створений з використанням сучасних frontend-технологій та орієнтацією на адаптивність і зручність користування.
-
----
-
-## 🔍 Про проєкт
-
-Сервіс орієнтований на батьків, які шукають няню для своєї дитини.  
-Застосунок підтримує авторизацію, роботу з обраними елементами та має повністю адаптивний інтерфейс для мобільних пристроїв, планшетів і десктопів.
+The application is built with modern frontend technologies and focuses on clean UI, responsiveness, and user experience.
 
 ---
 
-## ⚙️ Основні технології
+## 🔍 About the Project
+
+This service is designed for parents who are looking for reliable babysitters for their children.  
+The application supports user authentication, favorites management, and a fully responsive interface for mobile, tablet, and desktop devices.
+
+---
+
+## ⚙️ Main Technologies
 
 - **Next.js (App Router)**
 - **React**
@@ -23,18 +23,21 @@
 - **Firebase (Authentication, Firestore)**
 - **React Hook Form**
 - **Lucide-react**
-- **Sonner (toast notifications)**
+- **Sonner (Toast notifications)**
 
 ---
 
-## 🎨 Макет
+## 🎨 Design
 
-Дизайн реалізовано відповідно до  
-👉 [Figma макету проєкту](https://www.figma.com/file/u36ajEOsnwio2GDGiabVPD/Nanny-Sevices)
+The user interface was implemented according to the  
+👉 [Figma design](https://www.figma.com/file/u36ajEOsnwio2GDGiabVPD/Nanny-Sevices)
 
 ---
 
-## 📋 Технічне завдання
+## 📋 Technical Specification
 
-Опис вимог до проєкту доступний тут:  
-👉 [Технічне завдання](https://docs.google.com/document/d/19ugM1gvOw81nCyALr4EZs3dmv6OfJm94VjupcytbnJY/edit)
+The project requirements are described in the  
+👉 [Technical specification document](https://docs.google.com/document/d/19ugM1gvOw81nCyALr4EZs3dmv6OfJm94VjupcytbnJY/edit)
+
+
+
