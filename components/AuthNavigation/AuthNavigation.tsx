@@ -36,7 +36,7 @@ export default function AuthNavigation({
 
         <button
           onClick={handleLogout}
-          className="border px-4 py-2 rounded-full hover:bg-white/10"
+          className="h-12 w-33.5 border border-background rounded-[30px] hover:bg-white hover:text-(--dark-green) transition duration-250"
         >
           Log Out
         </button>
@@ -48,7 +48,7 @@ export default function AuthNavigation({
     <div className="flex gap-4 justify-center items-center">
       <button
         onClick={onLoginClick}
-        className="border border-[rgba(251,251,251,0.4)] rounded-[30px] px-9.75 py-3.5 font-medium text-[16px] text-background hover:text-(--dark-green) hover:bg-background transition-all duration-250 ease-in-out"
+        className="flex justify-center items-center border border-[rgba(251,251,251,0.4)] rounded-[30px] w-31 h-12 py-3.5 font-medium text-[16px] text-background hover:text-(--dark-green) hover:bg-background transition-all duration-250 ease-in-out"
       >
         Log In
       </button>

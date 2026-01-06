@@ -99,7 +99,7 @@ export default function RegisterModal({ onClose }: Props) {
             <input
               type="text"
               placeholder="Name"
-              className="input"
+              className="input focus:outline-none"
               {...register("name")}
             />
             {errors.name?.message && (

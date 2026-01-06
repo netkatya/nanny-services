@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import LogInModal from "../LogInForm/LogInModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
@@ -16,11 +17,12 @@ export default function HeaderInner() {
 
   const { user } = useAuth();
   const isAuthenticated = !!user;
+  const pathname = usePathname();
 
   return (
     <div className="relative bg-dark-green">
       {/* Header bar */}
-      <div className="px-6 md:px-0 lg:px-16 flex items-center py-4">
+      <div className="px-6 md:px-10 xl:px-24 flex items-center py-4">
         {/* Logo */}
         <Link href="/">
           <svg width={164} height={28}>
@@ -29,7 +31,7 @@ export default function HeaderInner() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex md:gap-4 lg:gap-10 md:ml-10 md:mr-10 lg:ml-auto">
+        <nav className="hidden md:flex gap-4 lg:gap-10 md:ml-10 xl:mr-10 xl:ml-auto ">
           <Link
             href="/"
             className="text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
@@ -38,14 +40,26 @@ export default function HeaderInner() {
           </Link>
           <Link
             href="/nannies"
-            className="text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
+            className={`relative text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]
+    ${
+      pathname === "/nannies"
+        ? "after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-3 after:w-2 after:h-2 after:bg-white after:rounded-full"
+        : ""
+    }
+  `}
           >
             Nannies
           </Link>
           {isAuthenticated && (
             <Link
               href="/favorites"
-              className="text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
+              className={`relative text-background transition-all duration-250 hover:text-white hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]
+      ${
+        pathname === "/favorites"
+          ? "after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-3 after:w-2 after:h-2 after:bg-white after:rounded-full"
+          : ""
+      }
+    `}
             >
               Favorites
             </Link>

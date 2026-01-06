@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   FieldErrors,
   FieldValues,
@@ -17,6 +17,7 @@ export default function EmailPasswordFields<T extends FieldValues>({
   register,
   errors,
 }: EmailPasswordFieldsProps<T>) {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       {/* Email */}
@@ -24,7 +25,7 @@ export default function EmailPasswordFields<T extends FieldValues>({
         <input
           type="email"
           placeholder="Email"
-          className="input"
+          className="input focus:outline-none"
           {...register("email" as FieldPath<T>)}
         />
         {errors.email?.message && (
@@ -35,13 +36,31 @@ export default function EmailPasswordFields<T extends FieldValues>({
       </div>
 
       {/* Password */}
-      <div className="h-16 md:h-23 mb-4.5">
+      <div className="h-16 md:h-23 mb-4.5 relative">
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Password"
-          className="input"
+          className="input pr-12 focus:outline-none"
           {...register("password" as FieldPath<T>)}
         />
+        <button
+          type="button"
+          onClick={() => setShowPassword((prev) => !prev)}
+          className="absolute right-4 top-7 -translate-y-1/2"
+          aria-label="Toggle password visibility"
+        >
+          <svg width="24" height="24">
+            <use
+              href={
+                showPassword
+                  ? "/img/icons.svg#icon-eye-off"
+                  : "/img/icons.svg#icon-eye"
+              }
+              fill="#fff"
+              stroke="#11101c"
+            />
+          </svg>
+        </button>
         {errors.password?.message && (
           <p className="text-red-500 text-[14px] mb-1">
             {errors.password.message as string}

@@ -11,6 +11,7 @@ import type { Nanny, SortOption } from "@/types/nanny";
 import { filterAndSortNannies } from "@/utils/nannyUtils";
 import Loading from "../Loading";
 import AppointmentModal from "@/components/AppointmentModal/AppointmentModal";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -95,6 +96,7 @@ export default function NanniesPage() {
             />
           )}
         </div>
+        <ScrollToTop />
       </main>
     </>
   );

@@ -11,6 +11,7 @@ import NannyFilterMenu from "@/components/NannyFilterMenu/NannyFilterMenu";
 import { SortOption } from "@/components/NannyFilterMenu/NannyFilterMenu";
 import { filterAndSortNannies } from "@/utils/nannyUtils";
 import Loading from "../Loading";
+import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 
 export default function FavoritesPage() {
   const { user } = useAuth();
@@ -73,7 +74,7 @@ export default function FavoritesPage() {
     <>
       <Header pageOption="other" variant="default" />
       <main className="bg-[#f3f3f3] pt-16 pb-25 px-4 lg:px-32 min-h-screen">
-        <div className="container">
+        <div className="container space-y-8">
           <NannyFilterMenu onChange={handleFilterChange} />
 
           {/* Loading indicator */}
@@ -92,6 +93,7 @@ export default function FavoritesPage() {
             <p className="text-center text-gray-500 mt-10">No favorites yet.</p>
           )}
         </div>
+        <ScrollToTop />
       </main>
     </>
   );

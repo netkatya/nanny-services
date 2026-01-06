@@ -42,7 +42,7 @@ export default function AppointmentModal({
 
   return (
     <div className="backdrop" onClick={handleBackdropClick}>
-      <div className="relative bg-background w-full md:w-150 rounded-[30px] p-4 md:p-14 mx-4 md:mx-0">
+      <div className="relative bg-background md:max-w-150 max-h-226.75 rounded-[30px] p-6 md:p-16 mx-4 md:mx-0">
         <button
           onClick={onClose}
           className="absolute top-5 right-5 text-xl font-bold"
@@ -50,18 +50,18 @@ export default function AppointmentModal({
           ✕
         </button>
 
-        <h2 className="font-medium text-[40px] leading-[120%] tracking-[-0.02em] mb-5">
+        <h2 className="font-medium text-3xl lg:text-[40px] leading-[120%] tracking-[-0.02em] mb-5 max-w-100">
           Make an appointment with a babysitter
         </h2>
 
-        <p className="font-normal text-[16px] leading-[125%] text-(--text1) mb-10">
+        <p className="font-normal text-[14px] md:text-[16px] leading-[125%] text-(--text1) mb-5">
           Arranging a meeting with a caregiver for your child is the first step
           to creating a safe and comfortable environment. Fill out the form
           below so we can match you with the perfect care partner.
         </p>
 
         {/* Nanny info */}
-        <div className="flex gap-3.5 items-center mb-10">
+        <div className="flex gap-3.5 items-center mb-5">
           <Image
             src={nanny.avatar_url}
             alt={nanny.name}
@@ -92,7 +92,7 @@ export default function AppointmentModal({
                   {...register("address")}
                   type="text"
                   placeholder="Address"
-                  className="input"
+                  className="input focus:outline-none"
                 />
                 {errors.address && (
                   <p className="text-red-500 text-[14px]">
@@ -107,7 +107,7 @@ export default function AppointmentModal({
                   {...register("phone")}
                   type="tel"
                   placeholder="+380"
-                  className="input"
+                  className="input focus:outline-none"
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-[14px]">
@@ -126,7 +126,7 @@ export default function AppointmentModal({
                   {...register("childAge")}
                   type="text"
                   placeholder="Child's age"
-                  className="input"
+                  className="input focus:outline-none"
                 />
                 {errors.childAge && (
                   <p className="text-red-500 text-[14px]">
@@ -159,7 +159,7 @@ export default function AppointmentModal({
               {...register("email")}
               type="email"
               placeholder="Email"
-              className="input"
+              className="input focus:outline-none"
             />
             {errors.email && (
               <p className="text-red-500 text-[14px]">{errors.email.message}</p>
@@ -172,7 +172,7 @@ export default function AppointmentModal({
               {...register("parentName")}
               type="text"
               placeholder="Father's or mother's name"
-              className="input"
+              className="input focus:outline-none"
             />
             {errors.parentName && (
               <p className="text-red-500 text-[14px]">
@@ -186,7 +186,7 @@ export default function AppointmentModal({
             <textarea
               {...register("comment")}
               placeholder="Comment"
-              className="border border-[rgba(17,16,28,0.1)] rounded-xl p-4 w-full h-full resize-none focus:outline-0"
+              className="border border-[rgba(17,16,28,0.1)] rounded-xl p-4 w-full h-full resize-none focus:outline-none"
             />
             {errors.comment && (
               <p className="text-red-500 text-[14px]">

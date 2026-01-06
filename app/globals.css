@@ -54,6 +54,20 @@ ul, ol, li {
   padding: 0;
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 64px;
+  }
+}
+
 .input {
   border: 1px solid rgba(17, 16, 28, 0.1);
   border-radius: 12px;

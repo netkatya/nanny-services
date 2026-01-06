@@ -16,7 +16,11 @@ interface NannyCardProps {
   onMakeAppointment: (nanny: Nanny) => void;
 }
 
-export default function NannyCard({ nanny, onRemoveFavorite, onMakeAppointment }: NannyCardProps) {
+export default function NannyCard({
+  nanny,
+  onRemoveFavorite,
+  onMakeAppointment,
+}: NannyCardProps) {
   const { user } = useAuth();
   const [showDetails, setShowDetails] = useState(false); // toggle detailed view
   const [isFavorite, setIsFavorite] = useState(false); // track if nanny is favorite
@@ -58,7 +62,8 @@ export default function NannyCard({ nanny, onRemoveFavorite, onMakeAppointment }
   return (
     <div className="flex flex-col md:flex-row gap-6 p-6 rounded-3xl bg-background">
       {/* Avatar */}
-      <div className="border-2 border-[rgba(240,63,59,0.2)] rounded-[30px] w-30 h-30 p-3 flex justify-center items-center overflow-hidden">
+      <div className="border-2 border-[rgba(240,63,59,0.2)] rounded-[30px] w-30 h-30 p-3 flex justify-center items-center overflow-hidden relative">
+        <span className="w-2.5 h-2.5 border-2 border-white rounded-full bg-[#38cd3e] z-20 absolute top-2.25 right-2.25"></span>
         <Image
           src={nanny.avatar_url}
           alt={nanny.name}
