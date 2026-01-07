@@ -18,7 +18,13 @@ export default function Header({
         variant === "overlay" && "absolute top-4 left-0 md:top-8 z-20"
       )}
     >
-      <div className="container">
+      <div
+        className={clsx(
+          variant === "default" && "container",
+          variant === "overlay" &&
+            "container px-6! md:px-14! lg:px-8! xl:px-32!"
+        )}
+      >
         <HeaderInner />
       </div>
     </header>

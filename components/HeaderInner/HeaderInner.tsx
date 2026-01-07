@@ -22,7 +22,7 @@ export default function HeaderInner() {
   return (
     <div className="relative bg-dark-green">
       {/* Header bar */}
-      <div className="px-6 md:px-10 xl:px-24 flex items-center py-4">
+      <div className=" flex items-center py-4">
         {/* Logo */}
         <Link href="/">
           <svg width={164} height={28}>
